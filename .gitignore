@@ -13,3 +13,4 @@ examples/*/output/*.docx
 examples/*/output/*.json
 .ipynb_checkpoints/
 *.log
+MEDIUM_ARTICLE_DRAFT.md
