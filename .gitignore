@@ -1,0 +1,15 @@
+.env
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ruff_cache/
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+docfill_store/
+examples/*/output/*.docx
+examples/*/output/*.json
+.ipynb_checkpoints/
+*.log
