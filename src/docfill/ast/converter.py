@@ -8,7 +8,6 @@ from pathlib import Path
 from typing import Any
 
 from docx import Document
-from docx.oxml.ns import qn
 from docx.shared import Pt
 
 from docfill.ast.models import (
