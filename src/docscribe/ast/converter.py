@@ -133,6 +133,7 @@ def build_ast(file_path: str | Path) -> DocumentAST:
                     )
                     order += 1
             block_index += 1
+            table_idx += 1
 
     return DocumentAST(
         file_id=file_id,
