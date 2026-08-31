@@ -6,7 +6,7 @@ import json
 import shutil
 from pathlib import Path
 
-from docfill.ast.models import DocumentAST
+from docscribe.ast.models import DocumentAST
 
 
 class LocalDocumentStore:

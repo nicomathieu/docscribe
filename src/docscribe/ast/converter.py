@@ -10,7 +10,7 @@ from typing import Any
 from docx import Document
 from docx.shared import Pt
 
-from docfill.ast.models import (
+from docscribe.ast.models import (
     DocumentAST,
     HeadingElement,
     ParagraphElement,

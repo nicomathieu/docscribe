@@ -15,7 +15,7 @@ Algorithm overview:
 
 from __future__ import annotations
 
-from docfill.ast.models import TextRun
+from docscribe.ast.models import TextRun
 
 
 # ---------------------------------------------------------------------------

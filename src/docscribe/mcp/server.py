@@ -1,10 +1,10 @@
 """FastMCP server exposing document-fill tools.
 
 Run with:
-    uvicorn docfill.mcp.server:app --port 8000
+    uvicorn docscribe.mcp.server:app --port 8000
 
 Environment variables:
-    STORE_DIR   Path to local document store (default: ./docfill_store)
+    STORE_DIR   Path to local document store (default: ./docscribe_store)
     API_KEY     Simple bearer token for authentication (default: none)
 """
 
@@ -17,17 +17,17 @@ from pathlib import Path
 
 from fastmcp import FastMCP
 
-from docfill.ast.converter import apply_cell_edit, apply_heading_edit, build_ast
-from docfill.ast.models import DocumentAST, TableCellElement, HeadingElement, TextRun
-from docfill.ast.run_formatter import add_top_padding, create_runs_from_template
-from docfill.storage.local import LocalDocumentStore
-from docfill.storage.session import DocumentRecord, SessionRegistry
+from docscribe.ast.converter import apply_cell_edit, apply_heading_edit, build_ast
+from docscribe.ast.models import DocumentAST, TableCellElement, HeadingElement, TextRun
+from docscribe.ast.run_formatter import add_top_padding, create_runs_from_template
+from docscribe.storage.local import LocalDocumentStore
+from docscribe.storage.session import DocumentRecord, SessionRegistry
 
-STORE_DIR = Path(os.getenv("STORE_DIR", "./docfill_store"))
+STORE_DIR = Path(os.getenv("STORE_DIR", "./docscribe_store"))
 store = LocalDocumentStore(STORE_DIR)
 session = SessionRegistry()
 
-mcp = FastMCP(name="docfill")
+mcp = FastMCP(name="docscribe")
 app = mcp.http_app()
 
 

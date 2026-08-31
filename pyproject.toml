@@ -3,9 +3,9 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "docfill-agent"
+name = "docscribe"
 version = "0.1.0"
-description = "LLM agent that fills DOCX templates via AST + MCP tools"
+description = "RAG agent for DOCX document authoring and filling via AST + MCP tools"
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
@@ -32,7 +32,7 @@ dev = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/docfill"]
+packages = ["src/docscribe"]
 
 [tool.ruff]
 line-length = 100
