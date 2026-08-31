@@ -70,6 +70,7 @@ def build_ast(file_path: str | Path) -> DocumentAST:
     elements: list[Any] = []
     order = 0
     block_index = 0
+    table_idx = 0
 
     for block in doc.element.body:
         tag = block.tag.split("}")[-1] if "}" in block.tag else block.tag
@@ -112,7 +113,6 @@ def build_ast(file_path: str | Path) -> DocumentAST:
         elif tag == "tbl":
             from docx.table import Table
             table = Table(block, doc)
-            table_idx = sum(1 for e in elements if hasattr(e, "table_index"))
 
             for row_idx, row in enumerate(table.rows):
                 for col_idx, cell in enumerate(row.cells):
