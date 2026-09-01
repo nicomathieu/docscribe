@@ -4,8 +4,10 @@ Run with:
     uvicorn docscribe.mcp.server:app --port 8000
 
 Environment variables:
-    STORE_DIR   Path to local document store (default: ./docscribe_store)
-    API_KEY     Simple bearer token for authentication (default: none)
+    STORE_BACKEND   "local" (default) or "s3"
+    STORE_DIR       Local store path (default: ./docscribe_store)  [local only]
+    S3_BUCKET       S3 bucket name                                  [s3 only]
+    S3_FOLDER       S3 key prefix (default: docscribe)              [s3 only]
 """
 
 from __future__ import annotations
@@ -23,8 +25,13 @@ from docscribe.ast.run_formatter import add_top_padding, create_runs_from_templa
 from docscribe.storage.local import LocalDocumentStore
 from docscribe.storage.session import DocumentRecord, SessionRegistry
 
-STORE_DIR = Path(os.getenv("STORE_DIR", "./docscribe_store"))
-store = LocalDocumentStore(STORE_DIR)
+_backend = os.getenv("STORE_BACKEND", "local").lower()
+if _backend == "s3":
+    from docscribe.storage.s3 import S3DocumentStore
+    store = S3DocumentStore()
+else:
+    store = LocalDocumentStore(Path(os.getenv("STORE_DIR", "./docscribe_store")))
+
 session = SessionRegistry()
 
 mcp = FastMCP(name="docscribe")

@@ -9,6 +9,7 @@ venv/
 dist/
 build/
 docfill_store/
+docscribe_store/
 examples/*/output/*.docx
 examples/*/output/*.json
 .ipynb_checkpoints/
