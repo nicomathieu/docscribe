@@ -17,6 +17,9 @@ import shutil
 import tempfile
 from pathlib import Path
 
+from dotenv import load_dotenv
+load_dotenv()
+
 from fastmcp import FastMCP
 
 from docscribe.ast.converter import apply_cell_edit, apply_heading_edit, build_ast
