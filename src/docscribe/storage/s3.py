@@ -42,7 +42,12 @@ class S3DocumentStore:
         if not self.bucket:
             raise ValueError("S3_BUCKET must be set (env var or constructor param)")
         self.folder = (folder or os.getenv("S3_FOLDER", "docscribe")).rstrip("/")
-        self._s3 = s3_client or boto3.client("s3")
+        if s3_client:
+            self._s3 = s3_client
+        else:
+            profile = os.getenv("AWS_PROFILE")
+            session = boto3.Session(profile_name=profile) if profile else boto3.Session()
+            self._s3 = session.client("s3")
 
     # ------------------------------------------------------------------
     # Internal helpers
